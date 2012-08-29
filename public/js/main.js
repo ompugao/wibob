@@ -28,6 +28,8 @@ var load_text = function(){
 
 var preview_mkd = function(json){
     console.log(json);
+    if (json.markdown == "") {json.markdown="Could not encode the text correctly... Sorry."};
+
     $('textarea#textmd').val(json.markdown);
     $('div#preview_text').html(json.html);
 }

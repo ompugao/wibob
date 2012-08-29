@@ -12,6 +12,7 @@ require 'sass'
 require 'pandoc-ruby'
 require 'httpclient'
 require 'pp'
+require 'kconv'
 require File.dirname(__FILE__)+'/bootstrap'
 Bootstrap.init :helpers, :controllers
 
