@@ -9,6 +9,9 @@ require 'yaml'
 require 'json'
 require 'haml'
 require 'sass'
+require 'pandoc-ruby'
+require 'httpclient'
+require 'pp'
 require File.dirname(__FILE__)+'/bootstrap'
 Bootstrap.init :helpers, :controllers
 

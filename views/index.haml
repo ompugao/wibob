@@ -4,11 +4,20 @@
 - content_for :head do
   :javascript
     var app_root = "#{app_root}";
-    var omikuji_api = app_root+'/omikuji.json';
+    var posturl_api = app_root+'/posturl.json';
+    var posttext_api = app_root+'/posttext.json';
+    var preview_api = app_root+'/preview.json';
+    var save_api = app_root+'/save.json';
   %script{:type => 'text/javascript', :src => "#{app_root}/js/main.js"}
 
 %div
-  %input{:id => 'start_btn', :type => 'button', :value => 'start'}
-%div
-  %h2 result
-  %ul#results
+  %div
+    %h3> URL:
+    %input{:id=>"url",:size=>80}
+    %button{:id => 'sendURL' } SendURL
+  %div
+    %h3 Text:
+    %textarea{:id=>"textmd",:rows=>6,:cols=>100,:value=>""}
+    %button{:id => 'preview' } Preview
+  %hr
+  %div{:id=>"preview_text"}

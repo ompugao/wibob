@@ -7,13 +7,27 @@ String.prototype.htmlEscape = function(){
 };
 
 $(function(){
-    $('input#start_btn').click(omikuji_start);
+    $.ajaxSetup({ "scriptCharset":'utf-8',
+                  "error":function(XMLHttpRequest,textStatus, errorThrown) {   
+                          console.log(textStatus);
+                          console.log(errorThrown);
+                          console.log(XMLHttpRequest.responseText);
+                  }
+    });
+    $('button#sendURL').click(load_url);
+    $('button#preview').click(load_text);
 });
 
-var omikuji_start = function(){
-    $.getJSON(omikuji_api, function(res){
-        console.log(res);
-        var li = $('<li>').append(res.result.htmlEscape() + ' - ' + res.time.htmlEscape());
-        $('ul#results').prepend(li);
-    });
-};
+var load_url = function (){
+    $.post(posturl_api,{ "url": $('input#url').val()},preview_mkd);
+}
+
+var load_text = function(){
+    $.post(posttext_api,{"text": $('textarea#textmd').val()},preview_mkd);
+}
+
+var preview_mkd = function(json){
+    console.log(json);
+    $('textarea#textmd').val(json.markdown);
+    $('div#preview_text').html(json.html);
+}
