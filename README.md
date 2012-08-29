@@ -1,4 +1,5 @@
-Sinatra Template (Omikuji)
+
+Wibob -- WIki Based On Bookmark
 ==========================
 Web App Template.
 
@@ -9,20 +10,7 @@ Web App Template.
 * jQuery
 
 
-Want to Use DB?
----------------
-if you want to use MongoDB or MySQL, checkout branch.
-
-* https://github.com/shokai/sinatra-template/tree/mongoid
-* https://github.com/shokai/sinatra-template/tree/dm-mysql
-
-
-Clone
------
-
-    % git clone git://github.com/shokai/sinatra-template.git
-    % cd sinatra-template
-
+I create Wibob from [sinatra-template](https://github.com/shokai/sinatra-templeate). Thanks, shokai.
 
 Install Dependencies
 --------------------
