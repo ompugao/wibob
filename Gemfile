@@ -10,4 +10,4 @@ gem 'haml'
 gem 'sass'
 gem 'pandoc-ruby'
 gem 'httpclient'
-
+gem 'shotgun'

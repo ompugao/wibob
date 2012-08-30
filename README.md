@@ -18,6 +18,11 @@ Install Dependencies
     % gem install bundler foreman
     % bundle install --path vendor/bundle
 
+Or, if you use rvm and want to use rvm gemset...
+
+    % rvm gemset create wibob
+    % rvm gemset use wibob
+    % (rvmsudo) bundle install --system
 
 Config
 ------
@@ -33,6 +38,10 @@ Run
     % foreman start
 
 open http://localhost:5000
+
+If you don't want to restart server, use shotgun.
+    
+    % shotgun config.ru
 
 
 Deploy
