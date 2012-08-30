@@ -29,13 +29,14 @@ post '/posturl.json' do
     mkd = PandocRuby.convert(orig_content.force_encoding("UTF-8")  ,{:from => "html",:to=>"markdown"}) if mkd.empty? # force encoding
 
     JSON.pretty_generate({:markdown=>mkd,
-          :html=>PandocRuby.convert(mkd,{:from => "markdown",:to=>:html},:mathml).gsub!(/<script.*>([\w\W]+?)<\/script>/ , "")})
+          :html=>PandocRuby.convert(mkd,{:from => "markdown",:to=>:html},:mathml)})
+          #:html=>PandocRuby.convert(mkd,{:from => "markdown",:to=>:html},:mathml).gsub!(/<script.*>([\w\W]+?)<\/script>/ , "")})
 end
 
 post '/posttext.json' do
     mkd = params[:text].encode("UTF-8")
     JSON.pretty_generate({:markdown => mkd,
-          :html=>PandocRuby.convert(mkd,{:from => "markdown",:to=>:html},:mathml).gsub!(/<script.*>([\w\W]+?)<\/script>/ , "")})
+          :html=>PandocRuby.convert(mkd,{:from => "markdown",:to=>:html},:mathml)})
 end
 
 post '/save.json' do
