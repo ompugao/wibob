@@ -55,12 +55,13 @@ def save_images(mkd,path)
         begin
             data=client.get_content(imgurl)
         rescue
-            next
+            # if we could not get image,we do not edit link.
+            next "![#{alttext}](#{imgurl})"
         end
         File.open(filename_fullpath,"w"){|file| file.write(data)}
 
         #fix the link
-        "![#{alttext}](#{File.join("./",img_dirname,filename)}"
+        "![#{alttext}](#{File.join("./",img_dirname,filename)})"
     end
 end
 
@@ -74,6 +75,7 @@ def commit_page(url,path,log,mkd)
     imgdir_fullpath = File.join(Conf['git_repos_path'],path)
 
     mkd = fix_relative_links(mkd,url)
+    File.open(mkd_fullpath+".mid","w").write(mkd)
     mkd = save_images(mkd,imgdir_fullpath)
 
     File.open(mkd_fullpath,"w").write(mkd)
