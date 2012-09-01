@@ -15,11 +15,9 @@ get '/' do
   haml :index
 end
 
-client = HTTPClient.new
-
 post '/posturl.json' do
     #encode the content of url to markdown
-    orig_content = client.get_content(params[:url])
+    orig_content = HTTPClient.new.get_content(params[:url])
     begin
         mkd = PandocRuby.convert(orig_content.encode("UTF-8"),{:from => "html",:to=>"markdown"})
     rescue => e
@@ -40,7 +38,10 @@ post '/posttext.json' do
 end
 
 post '/save.json' do
+    commitpath = params[:commitpath]
+    commitlog = params[:commitlog]
+    url = params[:url]
     mkd = params[:text].encode("UTF-8")
-    mkd
+    commit_page(url,commitpath,commitlog,mkd)
 end
 

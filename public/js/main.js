@@ -16,10 +16,13 @@ $(function(){
     });
     $('button#sendURL').click(load_url);
     $('button#preview').click(load_text);
+    $('button#save').click(save_mkd);
 });
 
 var load_url = function (){
-    $.post(posturl_api,{ "url": $('input#url').val()},preview_mkd);
+    var url = $('input#url').val();
+    $.post(posturl_api,{ "url": url },preview_mkd);
+    $('hidden#saved_url').val(url);
 }
 
 var load_text = function(){
@@ -32,4 +35,17 @@ var preview_mkd = function(json){
 
     $('textarea#textmd').val(json.markdown);
     $('div#preview_text').html(json.html);
+}
+
+var save_mkd = function (){
+    $.post(save_api,
+            {"commitpath": $('input#commitpath').val(),
+             "commitlog":  $('input#commitlog').val(),
+             "url":  $('hidden#saved_url').val() || $('input#url').val(),
+             "text": $('textarea#textmd').val()},
+            saved_callback);
+}
+
+var saved_callback = function(json){
+    
 }
