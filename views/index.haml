@@ -15,9 +15,16 @@
     %h3> URL:
     %input{:id=>"url",:size=>80}
     %button{:id => 'sendURL' } SendURL
+    %hidden{:id => 'saved_url'}
   %div
     %h3 Text:
     %textarea{:id=>"textmd",:rows=>6,:cols=>100,:value=>""}
     %button{:id => 'preview' } Preview
+  %div
+    %h3 CommitLog:
+    %input{:id=>'commitlog',:size=>60}
+    Path and its pagename (eg. javascript/tutorial):
+    %input{:id=>'commitpath'}
+    %button{:id => 'save'} save
   %hr
   %div{:id=>"preview_text"}

@@ -13,6 +13,8 @@ require 'pandoc-ruby'
 require 'httpclient'
 require 'pp'
 require 'kconv'
+require 'grit'
+require 'fileutils'
 require File.dirname(__FILE__)+'/bootstrap'
 Bootstrap.init :helpers, :controllers
 
