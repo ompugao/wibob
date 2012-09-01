@@ -75,7 +75,6 @@ def commit_page(url,path,log,mkd)
     imgdir_fullpath = File.join(Conf['git_repos_path'],path)
 
     mkd = fix_relative_links(mkd,url)
-    File.open(mkd_fullpath+".mid","w").write(mkd)
     mkd = save_images(mkd,imgdir_fullpath)
 
     File.open(mkd_fullpath,"w").write(mkd)
