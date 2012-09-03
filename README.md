@@ -24,6 +24,11 @@ Or, if you use rvm and want to use rvm gemset...
     % rvm gemset use wibob
     % (rvmsudo) bundle install --system
 
+And then, please install pandoc to your system.
+If your machine is debian/ubuntu,
+
+    % sudo aptitude install pandoc
+
 Config
 ------
 
@@ -53,7 +58,7 @@ LICENSE
 =======
 (The MIT License)
 
-Copyright (c) 2012 Sho Hashimoto
+Copyright (c) 2012 Shohei Fujii
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
