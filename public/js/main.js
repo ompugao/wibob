@@ -38,6 +38,7 @@ var preview_mkd = function(json){
 }
 
 var save_mkd = function (){
+    $('button#save').html("saving...");
     $.post(save_api,
             {"commitpath": $('input#commitpath').val(),
              "commitlog":  $('input#commitlog').val(),
@@ -47,5 +48,7 @@ var save_mkd = function (){
 }
 
 var saved_callback = function(json){
-    
+    if (json.result == "done") {
+        $('button#save').html("done.");
+    };
 }

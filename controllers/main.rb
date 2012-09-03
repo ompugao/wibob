@@ -43,5 +43,7 @@ post '/save.json' do
     url = params[:url]
     mkd = params[:text].encode("UTF-8")
     commit_page(url,commitpath,commitlog,mkd)
+    #FIXME: have to return correct result.
+    JSON.pretty_generate({:result => "done"})
 end
 
